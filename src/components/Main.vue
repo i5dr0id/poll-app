@@ -3,25 +3,25 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h1>{{ title }}</h1>
-			<h3 style="color:"> {{ desc }} </h3>
+			<h3> {{ desc }} </h3>
 		</div>
 	</div>
 	<div class="row poll-box">
 		<form class="container">
 			<div class="form-group">
 				<p>Enter your question here: </p>
-				<textarea  style="font-family:'Josefin Slab', serif" placeholder="Question"></textarea>
+				<textarea></textarea>
 			</div>
 
 			<div class="form-group">
 				<p>Add your options here: </p>
 				<div class="poll-options">
-					<input autocompelete="off" type="text" style="font-family:'Josefin Slab', serif" placeholder="Option 1">
+					<input autocompelete="off" type="text" placeholder="Option 1">
 				</div>
 			</div>
 
 			<div class="">
-				<button type="submit" class="btn btn-default" style="font-family:'Josefin Slab', serif">Create Poll</button>
+				<button type="submit" class="btn btn-default">Create Poll</button>
 			</div>
 		</form>
 	</div>
@@ -34,7 +34,7 @@ export default {
   data() {
     return {
 	  title: 'Poll App',
-	  desc: 'Create a poll'
+	  desc: 'Create a poll for your organization'
     };
   },
 };
@@ -46,22 +46,23 @@ export default {
 	text-align: center;
 }
 h1 {
-	font-family: 'Josefin Slab', serif;
+	font-family: "Oswald", sans-serif;
 	font-weight: bold;
  
 }
 
 h3 {
 	margin-top: 50px;
-	font-family: 'Josefin Slab', serif;
+	font-family: "Oswald", sans-serif;
 	font-weight: 100;
+	color: #7f8c8d;
 }
 
 .poll-box {
 	margin-top: 20px;
 }
 form > div > p {
-	font-family: 'Josefin Slab', serif;
+	font-family: "Oswald", sans-serif;
 	font-size: 1.17em;
 }
 textarea {
