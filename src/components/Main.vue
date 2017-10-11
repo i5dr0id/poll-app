@@ -15,8 +15,12 @@
 
 			<div class="form-group">
 				<p>Add your options here: </p>
-				<div class="poll-options">
-					<input autocompelete="off" type="text" placeholder="Option 1">
+				<div v-show="p_options">
+					<div v-for="(find, index) in finds" v-bind:key="index">
+						<div class="poll-options">
+							<input @keyup="addFind" :id="index" v-model="find.value" autocompelete="off" type="text" :placeholder="xyz">
+						</div>
+					</div>
 				</div>
 			</div>
 
@@ -34,9 +38,25 @@ export default {
   data() {
     return {
 	  title: 'Poll App',
-	  desc: 'Create a poll for your organization'
+	  desc: 'Create a poll for your organization',
+	  xyz: 'Option...',
+	  p_options: ["Option 1"],
+	  finds: [{text:""}] 
     };
   },
+  methods: {
+    addFind: function (e) {
+    // console.log("id:", typeof e.target.id)
+    // console.log("f lenght:", typeof this.finds.length - 1)
+    if(e.target.id == this.finds.length - 1){
+		e.target.isDirty = true;
+      this.finds.push({ text: '' });
+    }
+	    if (e.target.isDirty && e.target.value == '') {
+    	this.finds.splice(e.target.id, 1)
+    }
+  }
+  }
 };
 </script>
 
@@ -93,7 +113,6 @@ input[type=text] {
 	margin-bottom: 10px;
 	line-height: 36px;
 	font-size: 18px;
-
 }
 
 button {
@@ -109,5 +128,119 @@ button {
 	padding: 24px;
 	text-align: center;
 	text-decoration: none;
+}
+
+/* MEDIA QUERY */
+
+@media only screen and (min-width: 320px) {
+	/* Mobile Small: */
+textarea {
+	height: 180px;
+	width: 100%;
+	border: none;
+	border-radius: 8px;
+	color: #4E4868;
+	font-size: 26px;
+	font-weight: 500;
+	line-height: 30px;
+	outline: none;
+	padding: 24px 16px;
+	resize: none;
+	text-align: center;
+}
+
+input[type=text] {
+	border: 0;
+	box-sizing: border-box;
+	width: 50%;
+	max-width: 50%;
+	border-radius: 7px;
+	border: none;
+	padding: 8px 16px;
+	outline: none;
+	text-align: center;
+	margin-bottom: 10px;
+	line-height: 36px;
+	font-size: 18px;
+}
+
+button {
+	box-sizing: border-box;
+	margin: 0;
+	width: 100%;
+	background-color: #4E4868;
+	border-radius: 8px;
+	color : #ffffff;
+	/* display: inline-block; */
+	font-size: 20px;
+	font-weight: 500;
+	padding: 24px;
+	text-align: center;
+	text-decoration: none;
+}
+
+}
+
+@media only screen and (min-width: 375px) {
+	/* Mobile medium: */
+
+}
+
+@media only screen and (min-width: 425px) {
+	/* Mobile Large: */
+
+}
+
+@media only screen and (min-width: 768px) and (min-width: 900px){
+	/* Tablet: */
+
+}
+
+@media only screen and (min-width: 1024px) {
+	/* laptop */
+textarea {
+	height: 180px;
+	width: 50%;
+	border: none;
+	border-radius: 8px;
+	color: #4E4868;
+	font-size: 26px;
+	font-weight: 500;
+	line-height: 30px;
+	outline: none;
+	padding: 24px 16px;
+	resize: none;
+	text-align: center;
+}
+
+input[type=text] {
+	border: 0;
+	box-sizing: border-box;
+	width: 20%;
+	max-width: 20%;
+	border-radius: 7px;
+	border: none;
+	padding: 8px 16px;
+	outline: none;
+	text-align: center;
+	margin-bottom: 10px;
+	line-height: 36px;
+	font-size: 18px;
+}
+
+button {
+	box-sizing: border-box;
+	margin: 0;
+	width: 20%;
+	background-color: #4E4868;
+	border-radius: 8px;
+	color : #ffffff;
+	/* display: inline-block; */
+	font-size: 20px;
+	font-weight: 500;
+	padding: 24px;
+	text-align: center;
+	text-decoration: none;
+}
 }
 </style>
